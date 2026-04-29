@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="th">
+<body>
+<input id="i" value="1,4,3"><button onclick="g()">run</button>
+<pre id="out"></pre>
+<script>
+function g(){
+  let [a,n,r]=i.value.split(',');
+  n=+n;r=+r;
+  out.textContent=[...Array(r)].map(()=>
+    [...Array(n)].map((_,k)=>a.repeat(k+1))
+    .concat([...Array(n-1)].map((_,k)=>a.repeat(n-1-k)))
+    .join('\n')
+  ).join('\n');
+}
+</script>
+</body>
+</html>
