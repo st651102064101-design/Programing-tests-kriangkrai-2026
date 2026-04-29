@@ -2,7 +2,7 @@
 Programming test by kriangkrai khongmueang
 
 ## 🚀 Resoult (Live Demo)
-คลิกที่หัวข้อเพื่อดูหน้าเว็บของแต่ละงาน:
+Click on the title to view the webpage for each event. :
 
 1. [**Create a Responsive Form**](https://st651102064101-design.github.io/Programing-tests-kriangkrai-2026/1.%20Create%20a%20Responsive%20Form./)
    - Contains `index.html` and `assets/` with Bootstrap 5.3.8 distribution files.
