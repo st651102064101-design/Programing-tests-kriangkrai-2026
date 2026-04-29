@@ -4,26 +4,27 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Users</title>
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
     <h1>Users</h1>
     <div id="content">Loading...</div>
     <script>
-    const $content = $('#content');
-    $.getJSON('https://dummyjson.com/users')
-    .done(data => {
+    const content = document.getElementById('content');
+
+    fetch('https://dummyjson.com/users')
+      .then(r => r.ok ? r.json() : Promise.reject('Network error'))
+      .then(data => {
         const users = data.users || [];
-        if (!users.length) return $content.text('No users');
+        if (!users.length) return content.textContent = 'No users';
         const rows = users.map(u =>
-        `<tr><td>${u.id}</td><td>${u.firstName} ${u.lastName}</td><td>${u.email}</td><td>${u.phone}</td></tr>`
+          `<tr><td>${u.id}</td><td>${u.firstName} ${u.lastName}</td><td>${u.email}</td><td>${u.phone}</td></tr>`
         ).join('');
-        $content.html(`<table>
-        <tr><th>ID</th><th>Name</th><th>Email</th><th>Phone</th></tr>
-        ${rows}
-        </table>`);
-    })
-    .fail(() => $content.text('Error'));
-</script>
+        content.innerHTML = `<table>
+          <tr><th>ID</th><th>Name</th><th>Email</th><th>Phone</th></tr>
+          ${rows}
+        </table>`;
+      })
+      .catch(() => content.textContent = 'Error');
+    </script>
 </body>
 </html>
